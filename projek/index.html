@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Sweet 17 Keysha ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #ff4e91, #ff9a9e);
+    overflow-x: hidden;
+    color: white;
+}
+
+h1 {
+    margin-top: 40px;
+    font-size: 3em;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 30px yellow; }
+}
+
+.slider {
+    width: 300px;
+    height: 400px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 20px white;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4e91;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: yellow;
+}
+
+.hidden {
+    display: none;
+    font-size: 1.4em;
+    margin: 20px;
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>HAPPY SWEET SEVENTEEN 🎉</h1>
+<h2>Keysha Faeyza Maulana ❤️</h2>
+
+<div class="slider">
+    <img id="slide" src="foto1.jpg">
+</div>
+
+<button onclick="showMessage()">Klik Untuk Surprise 🎁</button>
+
+<div class="hidden" id="message">
+    Selamat ulang tahun ke-17 sayangku 💕 <br><br>
+    Di umur kamu yang ke-17 ini,  
+    semoga semua impian kamu tercapai ✨ <br><br>
+    I Love You So Much 💖
+</div>
+
+<audio id="music" autoplay loop>
+    <source src="lagu.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// SLIDER FOTO
+let images = ["foto1.jpg","foto2.jpg","foto3.jpg"];
+let i = 0;
+
+setInterval(function(){
+    i++;
+    if(i >= images.length) i = 0;
+    document.getElementById("slide").src = images[i];
+}, 3000);
+
+// SHOW MESSAGE + CONFETTI
+function showMessage(){
+    document.getElementById("message").style.display = "block";
+    confettiEffect();
+}
+
+// LOVE ANIMATION
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+setInterval(createHeart, 300);
+
+// CONFETTI EFFECT
+function confettiEffect(){
+    for(let i=0;i<150;i++){
+        let conf = document.createElement("div");
+        conf.style.position="fixed";
+        conf.style.width="10px";
+        conf.style.height="10px";
+        conf.style.backgroundColor="hsl("+Math.random()*360+",100%,50%)";
+        conf.style.left=Math.random()*100+"vw";
+        conf.style.top="-10px";
+        conf.style.opacity=Math.random();
+        conf.style.transform="rotate("+Math.random()*360+"deg)";
+        conf.style.transition="top 3s linear";
+        document.body.appendChild(conf);
+
+        setTimeout(()=>{
+            conf.style.top="100vh";
+        },10);
+
+        setTimeout(()=>{
+            conf.remove();
+        },3000);
+    }
+}
+</script>
+
+</body>
+</html>
